@@ -3,9 +3,10 @@
 server class to paginate a dataset of popular baby names.
 """
 
-from typing import Tuple, List, Dict, Any
+
 import csv
 import math
+from typing import Tuple, List, Dict, Any
 
 
 index_range = __import__("0-simple_helper_function")
@@ -21,7 +22,6 @@ class Server:
         # Initialize the dataset as None
         self.__dataset = None
 
-        @property
         def dataset(self) -> List[List]:
             """
             If the dataset has not been loaded yet, load it from the CSV file
@@ -51,11 +51,11 @@ class Server:
 
         # If the start index is greater than or equal to the length of the
         # dataset, return an empty list
-        if start >= len(self.dataset()):
+        if start >= len(self.dataset):
             return res_list
 
         # Otherwise, return the elements of the dataset for the given page
-        res_list = self.dataset()
+        res_list = self.dataset
         return res_list[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
@@ -67,7 +67,7 @@ class Server:
         assert isinstance(page_size, int) and page_size > 0
 
         # Calculate the total number of pages in the dataset
-        total_pages = int(len(self.dataset()) / page_size)
+        total_pages = int(len(self.dataset) / page_size)
 
         # Calculate the next and previous pages, if they exist
         next_page = page + 1 if (page + 1) < total_pages else None
