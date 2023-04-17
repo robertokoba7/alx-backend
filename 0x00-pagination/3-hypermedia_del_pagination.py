@@ -33,7 +33,8 @@ class Server:
     def indexed_dataset(self) -> Dict[int, List]:
         """Dataset indexed by sorting position, starting at 0
         """
-        # If the indexed dataset has not been created yet, create it from the dataset
+        # If the indexed dataset has not been created yet, create it from the
+        # dataset
         if self.__indexed_dataset is None:
             dataset = self.dataset()
             truncated_dataset = dataset[:1000]
@@ -45,7 +46,7 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """ return all data"""
         # Ensure that the index and page_size parameters are integers
-        assert type(index) == int and type(page_size) == int
+        assert isinstance(index, int) and isinstance(page_size, int)
         # Ensure that the index is within the range of the indexed dataset
         assert 0 <= index < len(self.indexed_dataset())
 
@@ -55,10 +56,12 @@ class Server:
         # Iterate over the indices within the range of the requested page
         for i in range(index, next_index):
             if self.indexed_dataset().get(i):
-                # If the element at the current index exists, append it to the results list
+                # If the element at the current index exists, append it to the
+                # results list
                 data.append(self.indexed_dataset()[i])
             else:
-                # If the element at the current index does not exist, increment the index and next_index
+                # If the element at the current index does not exist, increment
+                # the index and next_index
                 i += 1
                 next_index += 1
 
