@@ -37,13 +37,14 @@ class Server:
         """ Return the elements with a pagination order """
 
         # Check that the input arguments are of the correct type and value
-        assert type(page) == int and page > 0
-        assert type(page_size) == int and page_size > 0
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         # Determine the start and end indices for the current page
         start, end = index_range(page, page_size)
 
-        # Return an empty list if the start index is beyond the end of the dataset
+        # Return an empty list if the start index is beyond the end of the
+        # dataset
         if start >= len(self.dataset()):
             return []
 
@@ -54,8 +55,8 @@ class Server:
         """ Returns a object """
 
         # Check that the input arguments are of the correct type and value
-        assert type(page) == int and page > 0
-        assert type(page_size) == int and page_size > 0
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         # Calculate the total number of pages in the dataset
         total_pages = int(len(self.dataset()) / page_size)
@@ -64,7 +65,8 @@ class Server:
         next_page = page + 1 if (page + 1) < total_pages else None
         prev_page = page - 1 if page > 1 else None
 
-        # Return an object containing pagination information and the data for the current page
+        # Return an object containing pagination information and the data for
+        # the current page
         return {
             "page_size": len(self.get_page(page, page_size)),
             "page": page,
