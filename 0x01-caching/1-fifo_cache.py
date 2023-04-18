@@ -50,7 +50,7 @@ class FIFOCache(BaseCaching):
         Implement get method for the FIFOCache class
         """
 
-        # Checking if key is None or if 
+        # Checking if key is None or if
         # it doesnt exist in cache data
         if key is none or key not in self.cache_data:
             return None
