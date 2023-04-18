@@ -23,12 +23,12 @@ class FIFOCache(BaseCaching):
         """
         Implemente put method for the FIFOCache class
         """
-        if key is None and item is None:
+        if key is None or item is None:
             return
 
         # check if number of items in the cache data > maximum
-        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            to_discard = next(iter(self.cache_data))
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            to_discard = list(self.cache_data.keys())[0]
             del self.cache_data[to_discard]
             print(f"DISCARD: {to_discard}\n")
 
@@ -42,7 +42,7 @@ class FIFOCache(BaseCaching):
 
         # Checking if key is None or if
         # it doesnt exist in cache data
-        if key is none or key not in self.cache_data:
+        if key is None or key not in self.cache_data:
             return None
         # Return the value associated with
         # the key the cache data dictionary
