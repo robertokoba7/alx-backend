@@ -40,7 +40,8 @@ class BasicCache(BaseCaching):
         Retrives the item from the cache.
 
         -param key: the key of the item to be retrived.
-        -return: the item associated with the key, None if the key is not found.
+        -return: the item associated with the key,
+        None if the key is not found.
         """
         if key is None or key not in self.cache_data:
             return None
