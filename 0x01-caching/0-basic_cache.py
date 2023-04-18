@@ -25,11 +25,6 @@ class BasicCache(BaseCaching):
         """
         self.cache_data = {}
 
-    def __init__(self):
-        """ Initiliaze
-        """
-        self.cache_data = {}
-
     def print_cache(self):
         """ Print the cache
         """
