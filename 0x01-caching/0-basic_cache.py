@@ -9,7 +9,9 @@ Defines the BaseCaching class that:
 """
 
 from base_caching import BaseCaching
-
+"""
+contains a dictionary
+"""
 
 class BasicCache(BaseCaching):
     """
@@ -21,14 +23,6 @@ class BasicCache(BaseCaching):
         Initializes a new instance of the BaseCaching class
         """
         self.cache_data = {}
-
-    def print_cache(self):
-        """
-        Prints the contents of the cache
-        """
-        print("Current cache")
-        for key in sorted(self.cache_data.keys()):
-            print("{}: {}".format(key, self.cache_data.get(key)))
 
     def put(self, key, item):
         """
