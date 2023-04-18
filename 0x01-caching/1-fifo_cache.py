@@ -19,9 +19,6 @@ class FIFOCache(BaseCaching):
         # Call the constructor of the parent class
         super().__init__()
 
-        # Initialize an empty list for the cache data
-        self.stack = []
-
     def put(self, key, item):
         """
         Implemente put method for the FIFOCache class
@@ -29,21 +26,14 @@ class FIFOCache(BaseCaching):
         if key is None and item is None:
             return
 
-        # Add the item to the cache dictionary
-        if key not in self.stack:
-            self.stack.append(key)
-        else:
-            self.move_to_last_in(key)
-
-        self.cache_data[key] = item
-
         # check if number of items in the cache data > maximum
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            to_discard = self.stack[0]
-            if to_discard:
-                self.stack.remove(to_discard)
-                del self.cache_data[to_discard]
-                print(f"DISCARD: {to_discard}\n")
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+            to_discard = next(iter(self.cache_data))
+            del self.cache_data[to_discard]
+            print(f"DISCARD: {to_discard}\n")
+
+        # Add the item to the cache dictionary
+        self.cache_data[key] = item
 
     def get(self, key):
         """
@@ -57,11 +47,3 @@ class FIFOCache(BaseCaching):
         # Return the value associated with
         # the key the cache data dictionary
         return self.cache_data[key]
-
-    def move_to_last_in(self, key):
-        """
-        move an elem in first postion.
-        """
-        if self.stack[-1] != key:
-            self.stack.remove(key)
-            self.stack.append(key)
