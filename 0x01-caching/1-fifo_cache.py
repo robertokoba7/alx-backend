@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-from base_caching import BaseCaching
 """
 Importing the BaseCaching class
 """
+from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
@@ -13,7 +13,7 @@ class FIFOCache(BaseCaching):
 
     def __init__(self):
         """
-        Implemention of the constructor for the FIFOCache class
+        Implement constructor for the FIFOCache class
         """
 
         # Call the constructor of the parent class
@@ -24,7 +24,7 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """
-        Implementation of the put method for the FIFOCache class
+        Implemente put method for the FIFOCache class
         """
         if key is None and item is None:
             return
@@ -37,7 +37,7 @@ class FIFOCache(BaseCaching):
 
         self.cache_data[key] = item
 
-        # check if the number of iltems in the cache data exceedsmaximum
+        # check if number of items in the cache data > maximum
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             to_discard = self.stack[0]
             if to_discard:
@@ -47,18 +47,20 @@ class FIFOCache(BaseCaching):
 
     def get(self, key):
         """
-        Implement the get method for the FIFOCache class
+        Implement get method for the FIFOCache class
         """
 
-        # Checking if key is None ir if it doesnt exist in cache data
+        # Checking if key is None or if 
+        # it doesnt exist in cache data
         if key is none or key not in self.cache_data:
             return None
-        # Return the value associated with the key the cache data dictionary
+        # Return the value associated with
+        # the key the cache data dictionary
         return self.cache_data[key]
 
     def move_to_last_in(self, key):
         """
-        move an elem in
+        move an elem in first postion.
         """
         if self.stack[-1] != key:
             self.stack.remove(key)
