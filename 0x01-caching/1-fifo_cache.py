@@ -8,12 +8,14 @@ from base_caching import BaseCaching
 
 class FIFOCache(BaseCaching):
     """
-    Define the class that inherits from the BaseCaching
+    Define the class that inherits
+    from the BaseCaching
     """
 
     def __init__(self):
         """
-        Implement constructor for the FIFOCache class
+        Implement constructor
+        for the FIFOCache class
         """
 
         # Call the constructor of the parent class
@@ -26,7 +28,8 @@ class FIFOCache(BaseCaching):
         if key is None or item is None:
             return
 
-        # check if number of items in the cache data > maximum
+        # check if number of items
+        # in the cache data > maximum
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             to_discard = list(self.cache_data.keys())[0]
             del self.cache_data[to_discard]
