@@ -25,6 +25,18 @@ class BasicCache(BaseCaching):
         """
         self.cache_data = {}
 
+    def __init__(self):
+        """ Initiliaze
+        """
+        self.cache_data = {}
+
+    def print_cache(self):
+        """ Print the cache
+        """
+        print("Current cache:")
+        for key in sorted(self.cache_data.keys()):
+            print("{}: {}".format(key, self.cache_data.get(key))
+
     def put(self, key, item):
         """
         adds an item  to the cache
@@ -33,7 +45,7 @@ class BasicCache(BaseCaching):
         -param item: the key to store in cache
         """
         if key is not None and item is not None:
-            self.cache_data[key] = item
+            self.cache_data[key]=item
 
     def get(self, key):
         """
