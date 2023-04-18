@@ -15,7 +15,6 @@ class BasicCache(BaseCaching):
     """
     Class where my data are stored in the dictionary
     """
-
     def __init__(self):
         """
         Initializes a new instance of the BaseCaching class
@@ -23,7 +22,7 @@ class BasicCache(BaseCaching):
         self.cache_data = {}
 
     def print_cache(self):
-        """
+        """        
         Prints the contents of the cache
         """
         print("Current cache")
