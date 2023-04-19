@@ -9,6 +9,7 @@ class LIFOCache(BaseCaching):
     """
     class that inherits from the BaseCaching
     """
+
     def __init__(self):
         """
         Implement constructor for the LIFOCache class
