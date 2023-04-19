@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-an implementation of the LIFO (Last-In-First-Out) caching algorithm
+an implementation of the LIFO (Last-In-First-Out)
+caching algorithm
 """
 from base_caching import BaseCaching
 
@@ -12,14 +13,14 @@ class LIFOCache(BaseCaching):
 
     def __init__(self):
         """
-        Implement constructor for the LIFOCache class
+        Implement constructor for LIFOCache class
         """
         super().__init__()
         self.stack = []
 
     def put(self, key, item):
         """
-        Implement put method for the LIFOCache class
+        Implement put method for LIFOCache class
         """
         if key is None or item is None:
             return
@@ -39,7 +40,7 @@ class LIFOCache(BaseCaching):
 
     def get(self, key):
         """
-        Implement get method for the LIFOCache class
+        Implement get method for LIFOCache class
         """
         if key is None or key not in self.cache_data.keys():
             return None
