@@ -3,7 +3,11 @@
 an implementation of the LIFO (Last-In-First-Out)
 caching algorithm
 """
+
 from base_caching import BaseCaching
+"""
+Holds a dictionary
+"""
 
 
 class LIFOCache(BaseCaching):
