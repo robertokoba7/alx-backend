@@ -1,42 +1,35 @@
 #!/usr/bin/python3
-"""
-LRUCache module
-"""
+''' LRU Caching module.
+'''
 
-from base_caching import BaseCaching
-"""
-import Dictionary
-"""
+BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LRUCache(BaseCaching):
-    """LRU Cache"""
+    ''' LRU caching module.
+    '''
 
     def __init__(self):
-        """Initialize the instance"""
+        ''' Initializes the class instance. '''
         super().__init__()
-        self.queue = []
+        self.keys = []
 
     def put(self, key, item):
-        """Assign a key to a value"""
-        if key is None or item is None:
-            return
-
-        self.cache_data[key] = item
-
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            to_discard = self.queue.pop(0)
-            del self.cache_data[to_discard]
-            print(f"DISCARD: {to_discard}")
-
-        if key in self.queue:
-            self.queue.remove(key)
-        self.queue.append(key)
+        ''' Add an item to a dictionary '''
+        if key is not None and item is not None:
+            self.cache_data[key] = item
+            if key not in self.keys:
+                self.keys.append(key)
+            else:
+                self.keys.append(self.keys.pop(self.keys.index(key)))
+            if len(self.keys) > BaseCaching.MAX_ITEMS:
+                discard = self.keys.pop(0)
+                del self.cache_data[discard]
+                print('DISCARD: {:s}'.format(discard))
 
     def get(self, key):
-        """ return the value in self.cache_data."""
-        value = self.cache_data.get(key, None)
-        if value is not None:
-            self.queue.remove(key)
-            self.queue.append(key)
-        return value
+        ''' Returns a dictionary item with the given key'''
+        if key is not None and key in self.cache_data:
+            self.keys.append(self.keys.pop(self.keys.index(key)))
+            return self.cache_data[key]
+        return None
