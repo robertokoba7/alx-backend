@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-""" LRUCache module
+""" 
+LRUCache module
 """
+
 from base_caching import BaseCaching
+"""
+import Dictionary
+"""
 
 
 class LRUCache(BaseCaching):
@@ -30,7 +35,7 @@ class LRUCache(BaseCaching):
             self.move_to_last_in(key=key)
 
     def get(self, key):
-        """ return the value in self.cache_data linked to key."""
+        """ return the value in self.cache_data."""
         value = self.cache_data.get(key, None)
         if value is not None:
             self.move_to_last_in(key=key)
