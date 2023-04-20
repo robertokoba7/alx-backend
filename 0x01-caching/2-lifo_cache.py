@@ -32,7 +32,7 @@ class LIFOCache(BaseCaching):
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            discard = self.stack.pop()
+            discard = self.stack.pop(self.stack)
             del self.cache_data[discard]
             print(f"DISCARD:{discard}")
 
