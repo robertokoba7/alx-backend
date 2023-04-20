@@ -29,7 +29,7 @@ class LRUCache(BaseCaching):
             del self.cache_data[to_discard]
             print(f"DISCARD: {to_discard}")
 
-        if key not in self.queue:
+        if key in self.queue:
             self.queue.remove(key)
         self.queue.append(key)
 
