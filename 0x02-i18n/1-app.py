@@ -2,7 +2,7 @@
 """
 basic flask app
 """
-from flask import Flask, ender_template, request, g
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 app = Flask(__name__)
@@ -27,5 +27,5 @@ def hello():
     return render_template('1-index.html')
 
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     app.run()
